@@ -1,0 +1,46 @@
+<div class="person-container">
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+    <div class="person-box">
+        <div class="person-left">
+            <img [src]="person.avatar" [alt]="person.first_name + ' ' + person.last_name"/>
+        </div>
+        <div class="person-right">
+            <div class="field">
+                <label>First Name</label>
+                <div class="value">{{ person.first_name }}</div>
+            </div>
+            <div class="field">
+                <label>Last Name</label>
+                <div class="value">{{ person.last_name }}</div>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <div class="value" *ngIf="!isEditingEmail">
+                    {{ person.email }}
+                    <button mat-icon-button (click)="editEmail()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <form [formGroup]="emailForm" *ngIf="isEditingEmail">
+                    <mat-form-field appearance="fill" class="edit-email">
+                        <input matInput placeholder="Email" formControlName="email"/>
+                        <mat-error *ngIf="emailForm.get('email')?.hasError('required')">
+                            Email is required
+                        </mat-error>
+                        <mat-error *ngIf="emailForm.get('email')?.hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                    </mat-form-field>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-section">
+        <button mat-button color="primary" (click)="goBack()">Back</button>
+        <button mat-button color="accent" [disabled]="!isEditingEmail || emailForm.invalid" (click)="saveEmail()">
+            Save
+        </button>
+    </div>
+</div>

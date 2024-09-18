@@ -1,0 +1,12 @@
+<div class="people-dashboard">
+    <div class="dashboard-content">
+        <a class="person" *ngFor="let person of people" [routerLink]="['/person', person.id]">
+            <img [src]="person.avatar" [alt]="person.first_name + ' ' + person.last_name"/>
+            <div>{{ person.first_name }} {{ person.last_name }}</div>
+        </a>
+        <div class="pagination">
+            <button mat-button (click)="previousPage()">Previous</button>
+            <button mat-button (click)="nextPage()">Next</button>
+        </div>
+    </div>
+</div>

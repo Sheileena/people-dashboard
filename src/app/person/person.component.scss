@@ -1,0 +1,77 @@
+.person-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  .success {
+    color: green;
+    margin-bottom: 10px;
+  }
+
+  .person-box {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+    .person-left {
+      width: 27%;
+      display: flex;
+
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+      }
+    }
+
+    .person-right {
+      .field {
+        margin-bottom: 20px;
+
+        label {
+          font-size: 14px;
+          color: gray;
+        }
+
+        .value {
+          font-size: 18px;
+          font-weight: 500;
+          margin-top: 5px;
+
+          button {
+            margin-left: 5px;
+          }
+        }
+
+        .edit-email {
+          width: 250px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .person-box {
+      flex-direction: column;
+      align-items: center;
+      .person-left {
+        width: 50%;
+      }
+    }
+
+    .button-section {
+      justify-content: center;
+    }
+  }
+}
